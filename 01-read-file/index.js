@@ -10,11 +10,16 @@ const path = require('path');
 //   console.log(data.toString());
 // });
 
-let stream = fs.createReadStream(path.join(__dirname, 'text.txt'));
+let Readstream = fs.createReadStream(path.join(__dirname, 'text.txt'));
 
-stream.on('data', data => {
+// stream.on('data', data => {
+//   console.log(data.toString());
+// });
+// stream.on('error', error => {
+//   console.log(error.message);
+// });
+
+Readstream.on('data', (data, err) => {
+  if (err) throw err.message;
   console.log(data.toString());
-});
-stream.on('error', error => {
-  console.log(error.message);
 });
